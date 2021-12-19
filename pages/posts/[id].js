@@ -11,6 +11,7 @@ export default function PostComponent({ customer }) {
   }
   return (
     <div>
+      <h2>Small Change</h2>
       <Markdown>{customer.firstName}</Markdown>
       <Markdown>{customer.lastName}</Markdown>
       <Markdown>{customer.phoneNumber}</Markdown>
