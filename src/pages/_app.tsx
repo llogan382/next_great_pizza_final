@@ -35,7 +35,8 @@ const MyApp = (props: MyAppProps) => {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-             <h1>Hello {user.username}</h1>
+        {console.log('user', user)}
+             <h1>Hello {user.attributes.email}</h1>
       <button onClick={signOut}>Sign out</button>
         <Component {...pageProps} />
       </ThemeProvider>

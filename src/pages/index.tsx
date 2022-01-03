@@ -20,11 +20,8 @@ const Home: NextPage = () => {
         }}
       >
         <Typography variant="h4" component="h1" gutterBottom>
-          MUI v5 + Next.js with TypeScript example
+        This is the next great pizza restaurant
         </Typography>
-        <Link href="/about" color="secondary">
-          Go to the about page
-        </Link>
         <ProTip />
         <Copyright />
       </Box>
