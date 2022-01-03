@@ -1,9 +1,9 @@
 import { withSSRContext } from "aws-amplify";
-import { Customer } from "../../src/models";
+import { Customer } from "../../models";
 import Markdown from "react-markdown";
 import { useRouter } from "next/router";
 
-export default function PostComponent({ customer }) {
+export default function PostComponent({ customer }): JSX.Element {
   const router = useRouter();
 
   if (router.isFallback) {

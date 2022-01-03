@@ -1,14 +1,14 @@
 {
-  "staging": {
+  "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-finalnextgreatpizza-staging-174426-authRole",
-      "UnauthRoleArn": "arn:aws:iam::536327525881:role/amplify-finalnextgreatpizza-staging-174426-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::536327525881:role/amplify-finalnextgreatpizza-staging-174426-authRole",
+      "AuthRoleName": "amplify-finalnextgreatpizza-dev-114027-authRole",
+      "UnauthRoleArn": "arn:aws:iam::536327525881:role/amplify-finalnextgreatpizza-dev-114027-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::536327525881:role/amplify-finalnextgreatpizza-dev-114027-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-finalnextgreatpizza-staging-174426-deployment",
-      "UnauthRoleName": "amplify-finalnextgreatpizza-staging-174426-unauthRole",
-      "StackName": "amplify-finalnextgreatpizza-staging-174426",
-      "StackId": "arn:aws:cloudformation:us-east-1:536327525881:stack/amplify-finalnextgreatpizza-staging-174426/4f645e60-60f3-11ec-95c3-0e6548286fa1",
+      "DeploymentBucketName": "amplify-finalnextgreatpizza-dev-114027-deployment",
+      "UnauthRoleName": "amplify-finalnextgreatpizza-dev-114027-unauthRole",
+      "StackName": "amplify-finalnextgreatpizza-dev-114027",
+      "StackId": "arn:aws:cloudformation:us-east-1:536327525881:stack/amplify-finalnextgreatpizza-dev-114027/cb8a6dd0-6252-11ec-9c21-0a8cfc7cae61",
       "AmplifyAppId": "d3cc3sm7fsm6gh"
     }
   }
