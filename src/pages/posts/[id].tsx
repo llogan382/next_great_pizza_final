@@ -3,7 +3,7 @@ import { Customer } from "../../models";
 import Markdown from "react-markdown";
 import { useRouter } from "next/router";
 
-export default function PostComponent({ customer }): JSX.Element {
+export default function PostComponent({ customer }: any): JSX.Element {
   const router = useRouter();
 
   if (router.isFallback) {
@@ -22,19 +22,19 @@ export default function PostComponent({ customer }): JSX.Element {
   );
 }
 
-export async function getStaticPaths(req) {
+export async function getStaticPaths(req: { req?: any; modules?: any[] | undefined; } | undefined): Promise<any> {
   const { DataStore } = withSSRContext(req);
   const customers = await DataStore.query(Customer);
-  const paths = customers.map((customer) => ({ params: { id: customer.id } }));
+  const paths = customers.map((customer: { id: any; }) => ({ params: { id: customer.id } }));
   return {
     paths,
     fallback: true,
   };
 }
 
-export async function getStaticProps(req) {
+export async function getStaticProps(req: { req?: any; modules?: any[] | undefined; } | undefined) {
   const { DataStore } = withSSRContext(req);
-  const { params } = req;
+  const { params } = req?.modules?.[0]?.props?.router ?? { params: { id: "1" } };
   const { id } = params;
   const customer = await DataStore.query(Customer, id);
 

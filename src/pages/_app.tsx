@@ -7,17 +7,25 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import theme from '../../styles/theme';
 import createEmotionCache from '../utils/createEmotionCache';
-import Amplify from "aws-amplify";
+import Amplify, { AWSKinesisProvider } from "aws-amplify";
 
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+
+import awsExports from '../aws-exports';
+
+Amplify.configure(awsExports);
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
 interface MyAppProps extends AppProps {
+  signOut: any;
+  user: any;
   emotionCache?: EmotionCache;
 }
 
-export default function MyApp(props: MyAppProps) {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+const MyApp = (props: MyAppProps) => {
+  const { Component, emotionCache = clientSideEmotionCache, pageProps, user, signOut } = props;
   return (
     <CacheProvider value={emotionCache}>
       <Head>
@@ -27,8 +35,12 @@ export default function MyApp(props: MyAppProps) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
+             <h1>Hello {user.username}</h1>
+      <button onClick={signOut}>Sign out</button>
         <Component {...pageProps} />
       </ThemeProvider>
     </CacheProvider>
   );
 }
+
+export default withAuthenticator(MyApp);
