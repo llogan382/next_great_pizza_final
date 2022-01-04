@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Link from '../components/Link';
+import Link from 'next/link';
 import ProTip from '../components/ProTip';
 import Copyright from '../components/Copyright';
 
@@ -25,17 +25,15 @@ const Home: NextPage = () => {
         <ProTip />
         <Copyright />
       </Box>
-      <p>This is the index page</p>
-      <p>This will be the landing page. </p>
+      <p>This is the Order page</p>
       <ul>
-        <li>Add splash page</li>
-        <li>Add order form link
-          <Link href="/order">Order</Link>
+        <li>Add form</li>
+        <li>If not signed in, add option to sign in before order is submitted</li>
+        <li>Add order submission page
+          <Link href="/orderComplete">Order Complete</Link>
         </li>
-        <li>Add "My Account Page"
-        <Link href="/posts/myAccount">My Account</Link>
-           </li>
       </ul>
+
 
     </Container>
   );

@@ -8,11 +8,10 @@ import { CacheProvider, EmotionCache } from '@emotion/react';
 import theme from '../../styles/theme';
 import createEmotionCache from '../utils/createEmotionCache';
 import Amplify, { AWSKinesisProvider } from "aws-amplify";
-
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-
 import awsExports from '../aws-exports';
+import Link from 'next/link';
 
 Amplify.configure(awsExports);
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -26,6 +25,7 @@ interface MyAppProps extends AppProps {
 
 const MyApp = (props: MyAppProps) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps, user, signOut } = props;
+  const userPage = user.username;
   return (
     <CacheProvider value={emotionCache}>
       <Head>
@@ -35,8 +35,9 @@ const MyApp = (props: MyAppProps) => {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        {console.log('user', user)}
+        {console.log(user)}
              <h1>Hello {user.attributes.email}</h1>
+        <Link href={`/${userPage}`}>My Account</Link>
       <button onClick={signOut}>Sign out</button>
         <Component {...pageProps} />
       </ThemeProvider>

@@ -25,17 +25,12 @@ const Home: NextPage = () => {
         <ProTip />
         <Copyright />
       </Box>
-      <p>This is the index page</p>
-      <p>This will be the landing page. </p>
+      <p>This is the Order Submission page</p>
       <ul>
-        <li>Add splash page</li>
-        <li>Add order form link
-          <Link href="/order">Order</Link>
-        </li>
-        <li>Add "My Account Page"
-        <Link href="/posts/myAccount">My Account</Link>
-           </li>
+        <li>Add Details of the order here</li>
+
       </ul>
+
 
     </Container>
   );
