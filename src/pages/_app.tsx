@@ -17,15 +17,10 @@ Amplify.configure(awsExports);
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
-interface MyAppProps extends AppProps {
-  signOut: any;
-  user: any;
-  emotionCache?: EmotionCache;
-}
 
-const MyApp = (props: MyAppProps) => {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps, user, signOut } = props;
-  const userPage = user.username;
+
+const MyApp = (props: { Component: any; emotionCache?: EmotionCache | undefined; pageProps: any; }) => {
+  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   return (
     <CacheProvider value={emotionCache}>
       <Head>
@@ -35,14 +30,12 @@ const MyApp = (props: MyAppProps) => {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        {console.log(user)}
-             <h1>Hello {user.attributes.email}</h1>
-        <Link href={`/${userPage}`}>My Account</Link>
-      <button onClick={signOut}>Sign out</button>
+    <h1>Hello!</h1>
+
         <Component {...pageProps} />
       </ThemeProvider>
     </CacheProvider>
   );
 }
 
-export default withAuthenticator(MyApp);
+export default MyApp;

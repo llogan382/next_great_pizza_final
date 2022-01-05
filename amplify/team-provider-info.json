@@ -10,11 +10,6 @@
       "StackName": "amplify-finalnextgreatpizza-dev-114027",
       "StackId": "arn:aws:cloudformation:us-east-1:536327525881:stack/amplify-finalnextgreatpizza-dev-114027/cb8a6dd0-6252-11ec-9c21-0a8cfc7cae61",
       "AmplifyAppId": "d3cc3sm7fsm6gh"
-    },
-    "categories": {
-      "auth": {
-        "finalnextgreatpizza": {}
-      }
     }
   }
 }
