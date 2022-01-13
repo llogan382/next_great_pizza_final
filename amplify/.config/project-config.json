@@ -2,7 +2,7 @@
   "providers": [
     "awscloudformation"
   ],
-  "projectName": "finalnextgreatpizza",
+  "projectName": "nextgreatpizzafinalv",
   "version": "3.1",
   "frontend": "javascript",
   "javascript": {

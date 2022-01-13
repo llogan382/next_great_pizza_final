@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "nextgreatpizzafinalv4",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authnextgreatpizzafinalv4",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

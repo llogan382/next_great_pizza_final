@@ -13,6 +13,8 @@ interface IFormInput {
 
 }
 const Order: any = () => {
+  // TODO: Add validation
+  // TODO: Add submit
   const { control, handleSubmit } = useForm<IFormInput>();
 
   const onSubmit = (data: IFormInput) => {

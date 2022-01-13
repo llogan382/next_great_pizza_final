@@ -1,0 +1,12 @@
+type Order @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Pizzas: [Pizza] @hasMany(indexName: "byOrder", fields: ["id"])
+}
+
+type Pizza @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  crust: String
+  size: String
+  toppings: [String]
+  orderID: ID @index(name: "byOrder")
+}

@@ -1,9 +1,9 @@
 {
   "version": 1,
   "serviceConfiguration": {
-    "apiName": "finalnextgreatpizza",
+    "apiName": "nextgreatpizzafinalv4",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-36e533b8-affe-4d44-b0ab-c5be9614f364/amplify/backend/api/finalnextgreatpizza/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-2864dfd3-b61e-43fa-b786-f2f36eae0563/amplify/backend/api/nextgreatpizzafinalv4/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
       "keyDescription": "api key description",
@@ -12,6 +12,10 @@
     "additionalAuthTypes": [
       {
         "mode": "AWS_IAM"
+      },
+      {
+        "mode": "AMAZON_COGNITO_USER_POOLS",
+        "cognitoUserPoolId": "authnextgreatpizzafinalv4"
       }
     ],
     "conflictResolution": {

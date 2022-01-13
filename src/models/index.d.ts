@@ -4,21 +4,31 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
-type CustomerMetaData = {
+type OrderMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-export declare class Customer {
+type PizzaMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+export declare class Order {
   readonly id: string;
-  readonly firstName?: string;
-  readonly lastName?: string;
-  readonly address?: string;
-  readonly city?: string;
-  readonly state?: string;
-  readonly zip?: number;
-  readonly phone?: string;
+  readonly Pizzas?: (Pizza | null)[];
   readonly createdAt?: string;
   readonly updatedAt?: string;
-  constructor(init: ModelInit<Customer, CustomerMetaData>);
-  static copyOf(source: Customer, mutator: (draft: MutableModel<Customer, CustomerMetaData>) => MutableModel<Customer, CustomerMetaData> | void): Customer;
+  constructor(init: ModelInit<Order, OrderMetaData>);
+  static copyOf(source: Order, mutator: (draft: MutableModel<Order, OrderMetaData>) => MutableModel<Order, OrderMetaData> | void): Order;
+}
+
+export declare class Pizza {
+  readonly id: string;
+  readonly crust?: string;
+  readonly size?: string;
+  readonly toppings?: (string | null)[];
+  readonly orderID?: string;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<Pizza, PizzaMetaData>);
+  static copyOf(source: Pizza, mutator: (draft: MutableModel<Pizza, PizzaMetaData>) => MutableModel<Pizza, PizzaMetaData> | void): Pizza;
 }

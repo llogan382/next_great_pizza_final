@@ -1,7 +1,7 @@
 export const schema = {
     "models": {
-        "Customer": {
-            "name": "Customer",
+        "Order": {
+            "name": "Order",
             "fields": {
                 "id": {
                     "name": "id",
@@ -10,54 +10,19 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "firstName": {
-                    "name": "firstName",
-                    "isArray": false,
-                    "type": "String",
+                "Pizzas": {
+                    "name": "Pizzas",
+                    "isArray": true,
+                    "type": {
+                        "model": "Pizza"
+                    },
                     "isRequired": false,
-                    "attributes": []
-                },
-                "lastName": {
-                    "name": "lastName",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "address": {
-                    "name": "address",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "city": {
-                    "name": "city",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "state": {
-                    "name": "state",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "zip": {
-                    "name": "zip",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "phone": {
-                    "name": "phone",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "orderID"
+                    }
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -77,7 +42,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "Customers",
+            "pluralName": "Orders",
             "attributes": [
                 {
                     "type": "model",
@@ -100,9 +65,99 @@ export const schema = {
                     }
                 }
             ]
+        },
+        "Pizza": {
+            "name": "Pizza",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "crust": {
+                    "name": "crust",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "size": {
+                    "name": "size",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "toppings": {
+                    "name": "toppings",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "orderID": {
+                    "name": "orderID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "Pizzas",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byOrder",
+                        "fields": [
+                            "orderID"
+                        ]
+                    }
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
         }
     },
     "enums": {},
     "nonModels": {},
-    "version": "e85a4a0866193d1fb60b6e4e8d6f7320"
+    "version": "083d3946c768d227fa406df47b76140b"
 };
