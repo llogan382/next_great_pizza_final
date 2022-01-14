@@ -1,14 +1,18 @@
 import {useState, useEffect} from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import Link from 'next/link';
+import awsmobile from '../aws-exports';
 import Select from "react-select";
-import { API, graphqlOperation } from 'aws-amplify';
+import { Amplify, API, Auth, withSSRContext } from "aws-amplify";
 import TextField from '@mui/material/TextField';
 import { FormControlLabel, Checkbox, Button } from '@mui/material';
 import { withAuthenticator } from '@aws-amplify/ui-react'
 // import * as mutations from './graphql/mutations';
 // import * as subscriptions from './graphql/subscriptions';
 import * as queries from '../graphql/queries';
+import { DataStore } from '@aws-amplify/datastore';
+import { Pizza } from '../models';
+import { listPizzas } from '../graphql/queries';
 
 interface IFormInput {
   size: { label: string; value: string } | null;
@@ -22,15 +26,20 @@ interface IFormInput {
 
 
 const Order = () => {
-  const getAllOrders = async () => {
-  const allOrders = await (API.graphql(graphqlOperation(queries.listOrders)) as any).then((res: any) => console.log(res));
-  console.log(allOrders);
-};
+
+
+async function getOrders() {
+  const models = await DataStore.query(Pizza);
+  console.log(models);
+
+}
+
 
   const { control, handleSubmit } = useForm<IFormInput>();
 
   const onSubmit = (data: IFormInput) => {
-    getAllOrders();
+    event.preventDefault();
+    getOrders();
     console.log(data);
   };
   const toppings = [
@@ -76,22 +85,7 @@ const Order = () => {
         )}
         control={control}
       />
-      {toppings.map(topping => (
-<>
-        <label key={topping.key}>{topping.label}</label>
-          <Controller
-          name={topping.value}
-          control={control}
-                    render={({ field }) => (
-            <Checkbox
-              onChange={(e) => field.onChange(e.target.checked)}
-              checked={field.value}
-            />
-          )}
 
-          />
-</>
-      ))}
       <Button type="submit" variant="contained" color="primary">
         Submit
       </Button>
