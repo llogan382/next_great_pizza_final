@@ -1,9 +1,9 @@
-type Order @model @auth(rules: [{allow: public}]) {
+type Order @model @auth(rules: [{ allow: public }]) {
   id: ID!
   Pizzas: [Pizza] @hasMany(indexName: "byOrder", fields: ["id"])
 }
 
-type Pizza @model @auth(rules: [{allow: public}]) {
+type Pizza @model @auth(rules: [{ allow: public, operations: [read] }]) {
   id: ID!
   crust: String
   size: String
