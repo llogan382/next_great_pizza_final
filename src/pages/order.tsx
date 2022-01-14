@@ -1,10 +1,14 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import Link from 'next/link';
 import Select from "react-select";
-
+import { API, graphqlOperation } from 'aws-amplify';
 import TextField from '@mui/material/TextField';
 import { FormControlLabel, Checkbox, Button } from '@mui/material';
+import { withAuthenticator } from '@aws-amplify/ui-react'
+// import * as mutations from './graphql/mutations';
+// import * as subscriptions from './graphql/subscriptions';
+import * as queries from '../graphql/queries';
 
 interface IFormInput {
   size: { label: string; value: string } | null;
@@ -12,15 +16,23 @@ interface IFormInput {
   toppings: Array<{ key: string; label: string; value: string }> | null;
 
 }
-const Order: any = () => {
+
   // TODO: Add validation
   // TODO: Add submit
+
+
+const Order = () => {
+  const getAllOrders = async () => {
+  const allOrders = await (API.graphql(graphqlOperation(queries.listOrders)) as any).then((res: any) => console.log(res));
+  console.log(allOrders);
+};
+
   const { control, handleSubmit } = useForm<IFormInput>();
 
   const onSubmit = (data: IFormInput) => {
-    alert(JSON.stringify(data));
+    getAllOrders();
+    console.log(data);
   };
-
   const toppings = [
     { key: "1", label: "Pepperoni", value: "Pepperoni" },
     { key: "2", label: "Sausage", value: "Sausage" },
@@ -87,4 +99,4 @@ const Order: any = () => {
   );
 };
 
-export default Order;
+export default withAuthenticator(Order);
