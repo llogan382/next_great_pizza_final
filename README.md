@@ -1,23 +1,18 @@
-# Redux Toolkit TypeScript Example
+# Fullstack Authentication Example with Next.js and NextAuth.js
 
-This example shows how to integrate Next.js with [Redux Toolkit](https://redux-toolkit.js.org).
+This is the starter project for the fullstack tutorial with Next.js and Prisma. You can find the final version of this project in the [`final`](https://github.com/prisma/blogr-nextjs-prisma/tree/final) branch of this repo.
 
-The **Redux Toolkit** is a standardized way to write Redux logic (create actions and reducers, setup the store with some default middlewares like redux devtools extension). This example demonstrates each of these features with Next.js
+To actually create the tables in your database, you now can use the following command of the Prisma CLI:
 
-## Deploy your own
+`npx prisma db push`
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+`npx prisma studio`
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-redux&project-name=with-redux&repository-name=with-redux)
 
-## How to use
+Because Prisma Client is tailored to your own schema, you need to update it every time your Prisma schema file is changing by running the following command:
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+`npx prisma generate`
 
-```bash
-npx create-next-app --example with-redux with-redux-app
-# or
-yarn create next-app --example with-redux with-redux-app
-```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+adjust your database schema by creating the actual tables in the database. Run the following command:
+`npx prisma db push`
